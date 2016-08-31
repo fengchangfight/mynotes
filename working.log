@@ -1,0 +1,1155 @@
+2016/5/5
+setup hardware
+setup vmware fusion, use license from mao
+set email (qq enterprise)
+	set up email client outlook
+	configure outlook, email address and user name must be same
+	in server address: imap.exmail.qq.com
+	out server address: smtp.exmail.qq.com
+sign up jira
+sign up confluence
+setup gitlab
+	gitlab: fengchang/dragon sword
+install git (fro
+Ω command line)
+install java8
+setup project
+	install intellij
+	import project, yacmp/service/new-yacmp
+	build project from terminal
+	mvn clean install -DskipTests
+	
+
+mac os shortcuts: refer tacos.txt
+
+install mongodb
+	install brew
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"    refer: http://brew.sh/
+	brew install mongodb
+	mkdir -p /data/db
+	sudo install -m 0755 -o $USER -d /data/db
+	mongod
+	
+	refer:   https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
+install rabbitmq
+	brew install rabbitmq
+    rabbitmq-server
+start web application:
+	http://localhost:8080/#/
+		admin@yacmp.com/yacmp
+
+
+write python script for inserting copy right line insertLine.py  only for, /Users/fengchang/codebase/yacmp/services/new-yacmp/src/main/java
+install mongodb client robomongo
+
+
+2016/5/6
+http://cloudify.hotinno.com:1688/cloudify-ui/#/blueprints?pageNobp1=1
+创业姿势.txt refer 
+git pull rebase by default:  refer gitmanual.txt
+todo: refer todo.txt
+
+2016/5/7
+update user.java, add get/set
+
+http://www.mustbegeek.com/difference-between-vsphere-esxi-and-vcenter/
+service must return object rather than string?
+update yacmpMainController.js, set remote user variable
+update index.html, replace hardcode name with {{remoteUser}}
+add LoginService
+update UriPaths.java
+update constants.js
+update securityconfig.java
+breakdown java part, to check the logic
+
+
+2016/5/9
+http://alien4cloud.github.io/
+
+update login logic, get rid of spring security, finish the framework before 10:30!!!
+	add file login.service.js
+	modify login.html, add reference for login.service.js
+	Add new class Cookie.java
+	add class LoginRequest.java
+	should not extend baseService
+	add cookieauth.service.js and reference in login.html(not likely to use)
+
+qa env: http://cloudchef.hotinno.com:1688/#/
+
+
+2016/5/10
+app.js
+	+'ngCookies', '$translate'
+issue:
+	1) injector:unpr  Unknown provider: translateFilterProvider <- translateFilter
+solution: 
+	1) ???
+
+jira:  http://confluence.hotinno.com:1688/display/CLOUD/2016-0509
+
+2015/5/11
+update twiki on git push procedure
+rabbitmqctl stop_app
+rabbitmqctl reset
+rabbitmqctl start_app
+update openstackcloudprovider.java
+make sure it works after mvn clean install
+deploy
+if succeed, push
+
+cc-58
+
+research quantom/neutron
+
+update: node_tab_volume.html
+update: component.resolver.js for volume size input 
+update: admin.catalog.edit.controller.js
+update: blueprint_component_tab_volume.html
+update: blueprintEditController.js
+
+command+P debug source file
+
+openstack: http://192.168.1.2/dashboard/project/instances/5d2a3fa5-7f0a-410b-927c-9eec1962d9c1/
+
+
+2016/5/12
+http://192.168.1.53:9200/_plugin/gui/index.html#/query
+http://192.168.1.21:9200/_plugin/gui/index.html#/query
+http://192.168.1.53:9200/_plugin/kopf
+http://192.168.1.20:9200/_plugin/kopf
+show mac connected wifi password:  ref: http://jingyan.baidu.com/article/39810a23c441a0b636fda6f7.html
+tencent password: 
+WXtengxzcYangp
+format json using python: 
+python -m json.tool test.json > formattest.json
+simple mode cloudify instance: 192.168.1.20
+http://192.168.1.53:9200/_plugin/kopf/#!/cluster
+install 
+ search plugin: /usr/share/elasticsearch
+https://github.com/jettro/elasticsearch-gui
+install manual: https://github.com/jettro/elasticsearch-gui/blob/master/README.md
+
+after install macport, set the path
+export PATH=/opt/local/bin:$PATH
+export PATH=/opt/local/sbin:$PATH
+sudo port -v selfupdate
+http://www.elasticsearchtutorial.com/elasticsearch-in-5-minutes.html
+
+elastic search partially recover:
+
+curl -XPOST 'http://192.168.1.21:9200/cloudify_storage/provider_context/CONTEXT/_update' -d '
+{"doc":{
+	"cloudify":{
+	  "cloudify_agent":{
+	  	"agent_key_path": "/root/.ssh/agent_key.pem"
+	  }
+	}
+}
+}'
+
+
+curl -XPOST 'http://192.168.1.21:9200/cloudify_storage/provider_context/CONTEXT/_update' -d '
+{"doc":{
+    "context":{
+	"cloudify":{
+	  "cloudify_agent":{
+	  	"agent_key_path": "/root/.ssh/agent_key.pem"
+	  }
+	}
+	}
+}
+}'
+
+"agents_keypair":{"external_resource":false,"type":"keypair","id":"cloudify_agent_key","name":"cloudify_agent_key"},
+
+curl -XPOST 'http://192.168.1.21:9200/cloudify_storage/provider_context/CONTEXT/_update' -d '
+{"doc":{
+    "context":{
+	"resources":{
+	  "agents_keypair":{"external_resource":false,"type":"keypair","id":"cloudify_agent_key","name":"cloudify_agent_key"}
+	}
+	}
+}
+}'
+
+resources->agents_keypair
+
+elastic tutorial: http://blog.csdn.net/kiwi_coder/article/details/27109389
+curl -X GET http://192.168.1.20:9200/cloudify_storage/provider_context
+
+
+openstack config path: centos@192.168.1.53   /etc/cloudify/openstack_plugin/   openstack_config.json
+
+cmd+shift+space   sublime select between brackets
+
+2016/5/13
+cloudify openstack
+
+setcookie example: http://viralpatel.net/blogs/spring-mvc-cookie-example/
+
+novaapi: https://jclouds.apache.org/reference/javadoc/1.9.x/
+
+projid : "5732948bdbb0bfdb63de5e64"
+cloudentryid: "openstackTestEntry_192168001002"
+
+nova api newest:
+https://jclouds.apache.org/reference/javadoc/1.9.x/org/jclouds/openstack/nova/v2_0/NovaApi.html
+
+2016/5/16
+mvn clean install(in new-yacmp) again to resolve dependency issues
+confirm VPN config is right
+rebuild from intellij
+reimport compile isssue
+test getavailzoneapi
+use availzone as filter in network
+update UI for availability zone
+go through a tutorial on spring security&angularjs: 
+		https://spring.io/guides/tutorials/spring-security-and-angular-js/#add-a-home-page
+spring leanring project: 
+	https://github.com/spring-guides/tut-spring-security-and-angular-js
+online java testbench: http://www.learnjavaonline.org/
+
+2016//5/17
+"cloudify.openstack.nodes.Server::availabilityzone"
+ps aux 
+chrome://restclient/content/restclient.xul
+rest easy on firefox, good rest client
+cat test.json | python -m json.tool  > formatjson.txt
+test openstack servie: 
+	1) http://192.168.1.2:5000/v2.0/tokens
+	 {"auth": {"tenantName": "demo", "passwordCredentials": {"username": "demo", "password": "password"}}}
+	2) curl -s -H "X-Auth-Token: $OS_TOKEN" \
+  http://192.168.1.2:5000/v2/$OS_TENANT_NAME/flavors \
+  | python -m json.tool
+http://192.168.1.2:5000/v2.1/​demo/servers/detail
+token id : a3e2b59ce214494284366633d9778387
+
+http://192.168.1.2:8774/v2.1/f9e8d84e102c41278d1bffa3549235db/servers/{serverid}
+working example: 
+	http://192.168.1.2:8774/v2.1/f9e8d84e102c41278d1bffa3549235db/servers/e41c0e2a-7e73-4a68-b991-982d1401fbf5
+openstack info:
+almost everything in http://192.168.1.2/dashboard/project/instances/e41c0e2a-7e73-4a68-b991-982d1401fbf5/
+
+download from terminal: curl -o sample.pdf 'http://www.vmware.com/files/pdf/ESXi_architecture.pdf'
+
+VSPHERE包括VCENTER和ESXI，ESXI通过VCENTER来管理
+
+
+2016/5/18
+
+license of sublime text: 
+Michael Barnes
+Single User License
+EA7E-821385
+8A353C41 872A0D5C DF9B2950 AFF6F667
+C458EA6D 8EA3C286 98D1D650 131A97AB
+AA919AEC EF20E143 B361B1E7 4C8B7F04
+B085E65E 2F5F5360 8489D422 FB8FC1AA
+93F6323C FD7F7544 3F39C318 D95E6480
+FCCC7561 8A4A1741 68FA4223 ADCEDE07
+200C25BE DBBC4855 C4CFB774 C5EC138C
+0FEC1CEF D9DCECEC D3A5DAD1 01316C36
+
+how/where deployment page rendered?
+
+when there are multiple files with same name, watch carefully otherwise it might make confusion and waste a lot of time
+
+2016/5/20
+submit interface part on vm detail
+cat test.json | python -m json.tool > formattest.json
+
+
+2016/5/23
+finish split vm page
+learn a bit about docker
+
+http://cloudchef.hotinno.com:1688/deployments/573d8a2ab9d42fa4ac4700ca/node-instances/vm-148
+            http://localhost:8080/deployments/573d8a2ab9d42fa4ac4700ca/node-instances/vm-148
+fail to provision some data, hard to test
+
+import blueprints
+http://apphub.hotinno.com:1688/blueprints/
+http://apphub.hotinno.com:1688/blueprints/openstack-simple-0.0.1-SNAPSHOT.zip
+
+jcloud nova api:
+
+
+2016/5/25
+learn about nodejs
+http://www.tutorialspoint.com/nodejs/nodejs_event_emitter.htm
+online nodejs repl: www.tutorialspoint.com/nodejs_terminal_online.php
+
+
+2016/5/26
+angularjs testbench http://www.runoob.com/try/try.php?filename=try_ng_intro
+http://www.openstack4j.com/
+
+Cloudchef_5G
+Cc12345678
+
+
+//openstack.nodes.server, basic, name not allow space
+//..number of instance only in server types(inheritance)
+
+2016/5/29
+http://jira.hotinno.com:1688/secure/Dashboard.jspa
+//vm detail finish
+//security group
+//port and port range exclude from each other
+//create resource bundle validation
+//integer break
+
+
+eteams: phonenumber/lmfj
+
+
+http://cloudify.hotinno.com:1688 ip http://192.168.1.20
+
+2016/6/1
+status!=teardown
+lease time!=o
+order by lease 5 recent
+expire replace lease
+
+linked clone VM
+	1. get name, endpoint, CPUs, Memory , Storage, Description
+	2. get snapshot for a specific vm
+
+increase number of tabs opened in intellij: prefenrece->general->editor tabs->tab limit
+vsphere yavijava API:
+	http://www.yavijava.com/docs/
+
+VirtualMachineSnapshotInfo sm= matchedVM.getSnapshot();
+            List<VirtualMachineSnapshotTree> vm= this.flatSnapshot(sm.getRootSnapshotList());
+
+http://cloudify.hotinno.com:1688 --->>http://192.168.1.20
+
+cloudify bp part
+http://docs.getcloudify.org/dev/plugins/vsphere/
+
+//几个小建议： queryVSphereVMHassnapshot，建议用VmWithSnapshot
+
+http://cloudify.hotinno.com:1688/cloudify-ui
+
+yaml formatter: 
+http://www.yamllint.com
+
+2016/6/6
+//save status of linked clone
+//clear linked/full clone  exclude
+//unique id issue
+
+online drawing
+https://sketch.io/sketchpad/
+
+cloudify of http://cloudify.hotinno.com:1688
+http://192.168.1.20/cloudify-ui/#/blueprint/test(57554b34d4c617b0ddaf26e0)-9ffad163-dcce-49f2-8949-197c5cafc041/source
+
+//蓝图in dashboard隔离完成
+//vm list tenant 隔离完成
+
+launchctl setenv initData true
+launchctl setenv CLOUDIFY_URL "http://192.168.1.22"
+
+
+2016/6/12
+//vsphere cloudentry rm 3 fields: dc/cluster/rp
+//update submit event handler on vsphere CE create/edit page : submit(cloud)/update(cloud)
+prj->rbs->resourcepool->cluster-(search by id rather than name)>datacenter
+
+注册公司名：
+https://www.sgs.gov.cn/notice/home
+
+2016/6/13
+//finish remove cluster issue, except for pick rb policy
+//the change should be vsphere only, will the code change affect other cloud platform?
+~spring integration tutorial:
+~http://www.intertech.com/Blog/spring-integration-tutorial-part-8-gateways/
+//learn spring integration
+//10% on openstack provision
+
+2016/6/14
+http://192.168.84.21/cloudify-ui/#/blueprints?pageNobp1=1
+
+ssh -i .ssh/agent_key.pem ubuntu@192.168.84.154
+ubuntu list all users
+cat /etc/passwd
+
+possible solution for init vm password in openstack provision post step:
+https://ask.openstack.org/en/question/5531/defining-default-user-password-for-ubuntu-cloud-image/
+https://ask.openstack.org/en/question/609/how-to-login-in-newly-booted-instances-created-from-images/
+https://www.youtube.com/watch?v=cz4i-i3VlP8&list=PLrUFyg1unBb8TtlWOzzTW1cz1bRzhEqor&index=15
+
+#cloud-config
+password: password
+chpasswd: { expire: True }
+ssh_pwauth: True
+
+
+
+create a vsphere vm
+check if 2 menus on snapshot occurs
+click on create snapshot button, should pop up a window for input snapshot name and desc,
+click submit should
+
+virtual machine list bug
+install pip:
+	sudo easy_install pip
+install openstack python sdk:
+	pip install python-openstackclient
+
+openstack SDK: http://developer.openstack.org/sdks/python/openstacksdk/users/index.html
+chmod -R 777
+https://pypi.python.org/pypi/openstacksdk#downloads
+
+install openstak python sdk: 
+	sudo chown -R $USER /usr/local/bin
+	pip install openstacksdk-0.8.6-py2.py3-none-any.whl --ignore-installed six
+
+python nova client: https://github.com/openstack/python-novaclient
+
+virtualenv my-venv
+source my-venv/bin/activate
+pip install IPython
+
+nt = client.Client(2, "demo", "password", "demo", "http://192.168.84.3:5000/v2.0")
+
+ create("vmcli", "ubuntu-dmao", flavor, meta=None, files=None, reservation_id=None, min_count=None, max_count=None, security_groups=None, userdata=None, key_name=None, availability_zone=None, block_device_mapping=None, block_device_mapping_v2=None, nics=None, scheduler_hints=None, config_drive=None, disk_config=None, admin_pass=None, access_ip_v4=None, access_ip_v6=None, **kwargs)
+
+ nics = [ { 'net-id': u'0092b055-e8a5-4029-9257-3798800c8ee5' } ]
+ nt.servers.create('fc', image, flavor, nics=nics)
+
+ nt.servers.create('fc3', image, flavor, nics=nics, userdata='''
+#cloud-config
+password: 123456
+chpasswd: { expire: True }
+ssh_pwauth: True''')
+
+2016/6/16
+//finish cc-157 rm dc/cluster/rp backend logic
+
+origin: {"one":"111","two":"222"}
+
+java -jar target/new-yacmp-0.0.1-SNAPSHOT.jar
+
+2016/6/20
+vsphere vm detail, no IP address
+remote to vsphere vm fail
+
+
+84.17(windows): Administrator/Passw0rd
+vcenter: root/vmware
+vsphere vm U/P: cloudchef/Passw0rd
+
+new cloudify
+http://192.168.84.52/cloudify-ui/#/blueprints?pageNobp1=1
+
+http://localhost:15672/#/connections
+
+userdata file: 
+http://192.168.1.120:1688/openstack_file/
+
+tar zcvf fabric-plugins9.tar.gz tmp/*
+
+engineX resource: cd manager/resources/
+
+
+2016/6/21
+plan of presentation:
+	//1. test qq screenpresantation
+	//2. test screen recording software(including audio)
+	3. prepare for list to present
+	    //1) Resize existing disk, vSphere Snapshot and restore, , 扩容虚机存储（添加VMDK）,变更虚拟机配置(添加CPU，修改内存）+add action of vmotion for vsphere to a new host
+	    2) 文件上传下载--issue
+	    //3) batch reboot VM(*f4, *4e)
+	    //4)  Host 物理机信息+云平台虚拟机增加以下信息：哪个应用系统（catalog name）、部门（project）、租户
+	    //5) App management , nginx component demo
+	    //6)  ip pool 
+	    //9) 审批 
+	    //10) execute scripts(NFS) + CRUD NFS entry in cloudentry and RB + Resource Bundle for NFS, user input a path, 
+	    //11) reset root password by script(existing vm), Scripts Library
+	    //12) 以项目为单位，显示其关联的虚拟机资源使用情况，并根据阈值显示状态颜色。
+	    //13) 目录项价格
+	    //14) VM List view – owner, project, CPU, memory usage
+	    //15) add VM filter based on project in VM list view
+	    //16) Modify pending request content in edit view. can be very simplified, like only modify number of instance.
+		//17) tenant segregation for (vm, bp, deployment, dashboard), tenant login segregation
+		//18) openstack password login
+		//19) vmdetail show CPU/Mem INFOR FOR vsphere, not for openstack
+		//20) resource usage in rb update
+		//21) user roles, how to demon??????
+		//22) rm dc/rp/cluster in cloudentry
+		//23) Number of snapshot control — resource bundle
+	4. prepare environment
+	5. prepare show/test cases
+	6. walk through
+get latest jar for demo:
+http://apphub.hotinno.com:1688/release/master/
+start application
+java -jar /root/new-yacmp-0.0.1-SNAPSHOT.jar
+demo env
+http://cloudchef.hotinno.com:1688/index.html#/
+
+
+nohup java -jar new-yacmp-0.0.1-SNAPSHOT.jar &
+
+http://192.168.1.18:8080/login.html
+
+realtime update : tail -f nohup.out
+
+execute scripts (mount NFS)
+
+systemctl list-unit-files|grep enabled
+
+https://192.168.84.9/mob/
+
+huangzifu3@gmail.com
+
+cat test.json | python -m json.tool >> formattest.json
+
+imported VM:
+	add status, 
+		//there is no status field in Resource.java??? how can there be in mongodb?
+		//how 'started' status come in to place? provision workflow
+	//ipaddress, 
+	cpu USAGE????  waiting?
+	MEMORY USAGE???? waiting?
+ 
+2016/6/29
+//ask steve about notification, figure out what and how notifcation work
+
+用户名 13636688612， 密码 Cc12345678
+
+message, detail, createDate
+
+vi /etc/nginx/conf.d/openstack.conf
+root@controller:/home/stack# service nginx restart
+
+//import VM with current tenant, 
+//move order of IsImported, think about the keywords
+//execute script
+
+passphrase: masterking123
+gpg --gen-key
+sudo find / -name secring.gpgs
+/Users/fengchang/.gnupg/secring.gpg
+find by wildcard: 
+find . -iname "*.jar"
+./License3j/license3j.sh encode --license-file=license-plain.txt --keyring-file="/Users/fengchang/.gnupg/secring.gpg" --key=fengchang --password=masterking123 --output=license.out
+
+
+When implementing licensing in a webapp installed on customer machines, make sure that its pre-compiled and preferably obfuscated. That way, the customer cannot change and/or make much sense of the license validation code
+cannot have a license server outside user's network(not reachable)
+cannot have a license server inside user's network(not controllable by us)
+
+
+java -cp /Users/fengchang/.m2/repository  -jar ./license3j-1.0.8-SNAPSHOT.jar encode --license-file=license-plain.txt --keyring-file="/Users/fengchang/.gnupg/secring.gpg" --key=keyunlimit --password=masterking123 --output=license.out
+
+
+java -cp talicense3j-1.0.8-SNAPSHOT.jar encode --license-file=license-plain.txt --keyring-file="/Users/fengchang/.gnupg/secring.gpg" --key=keyunlimit --password=masterking123 --output=license.out
+
+http://verhas.github.io/License3j/
+
+
+
+2016/7/4
+//research how http://verhas.github.io/License3j/ works
+//do estimation
+
+gpg --gen-key
+RSA and RSA
+size: 4096
+not expire
+Real name: cloudchefcloudch
+email:  support@cloudchef.io
+comment: no comment
+You selected this USER-ID:
+    "cloudchefcloudch (no comment) <support@cloudchef.io>"
+passphrase: masterking123
+
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+gpg: key 6607AB6B marked as ultimately trusted
+public and secret key created and signed.
+
+gpg: checking the trustdb
+gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model
+gpg: depth: 0  valid:   2  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 2u
+gpg: next trustdb check due at 2018-08-19
+pub   4096R/6607AB6B 2016-07-04
+      Key fingerprint = 02B1 BE95 D3BA 2C43 6EEB  3485 F63F 1A98 6607 AB6B
+uid       [ultimate] cloudchefcloudch (no comment) <support@cloudchef.io>
+sub   4096R/664DF939 2016-07-04
+
+sudo find . -name secring.gpg
+sudo find . -name pubring.gpg
+
+/Users/fengchang/.gnupg/secring.gpg
+
+../license3j.sh encode --license-file=license-plain.txt --keyring-file="/Users/fengchang/.gnupg/secring.gpg" --key="cloudchef" --password="masterking123" --output=license.out
+
+java -cp license3j-1.0.8-SNAPSHOT.jar:lib/bcpg-jdk15on-1.52.jar:lib/bcprov-jdk15on-1.52.jar  License3j encode --license-file=license-plain.txt --keyring-file="/Users/fengchang/dev/License3j/src/test/resources/secring.gpg" --key="[ultimate] cloudchefcloudch (no comment) <support@cloudchef.io>" --password="masterking123" --output=license.out
+
+generate key issue: 
+https://github.com/verhas/License3j/issues/22
+gpg --edit-key 
+
+generated: (invalid key)
+-----BEGIN PGP MESSAGE-----
+Version: BCPG v1.52
+
+owJ4nJvAy8zAxfjNXmpGGvvqbMbT9UniOZnJqXnFqW6ZOal+ibmpup7peflFqSnh
+Ne3nlHV1FaDSCmlAeS7l8NQUBa/SHAUDMwVDIysjYysTIwXn4BAFIwNDM67k5NSK
+gsyiVFsQT8/AVM/QAiiWV5qblFqUn1aWW2xraMCVmpJZkpmfZ5uUWJyZzNXJFMTC
+wMjFYMPKBLLQVCY5J780JTkjNQ3KUNDIy1dIzs/NTc0r0VSwKS4tKMgvKnGAK9PL
+zLdj4OIUgHnp8Cf+v3IazncllUNN403XLo1uCnhYfe2t7ZsHe/6V61/5pX+oft/f
+JyY1OU3/9p17f+DxlOeqDCab5JcIfnN3u9V9g+tpBcuGxCzr28t/tNzU1TM8v3bW
+w4avh3sN7izfarjFJOP73bmbHWQ39CumvY21dX8v89O8UWbZu5hAyap8zj9NS+4X
+JJz8n/gubM8bkf0y24I4THXvzX4r4x2xps/+yabqS+x1LT3sbxgNvsQdmCG1aI1g
+toniF1X1pd33JPbXiTo0c0/LNOjv9bRIcb1za5KanKuE2VZV8ZUpFbY/jinOtMuO
+8wn+Knk24tbHKZe5T5XOc8jsEV7sNmduSrz45Zb7z5j6bGsXLtWusTqzuKAr6Xi8
+e8uW4rTmnS9fp1z9b602Py2cT0biftn5L5/zBaeeEhdg7f5qOkGmkidQ6WjXHI8J
+x4wkbZ9Vndz24DXr7Xpb62Un5n5Rsf/HcuJD0b3gJtddWjMMLbYuXlPJOI1x3wYb
+74suTfnLbK887btVnem3sG6vq9+8Q1H9UyQEYo9UvL8Y0uMQN9+3ccbVY4lSaf1b
+nee4SnxXKhdSblLbdfri+R9O0rJz1rQLifl8Mz3vInc+pnnmVI6rh+Z9OPOh/KPf
++ylLmGPatSZXMVh+FFnM8+fCH1vNnFMfvr/ad92k6mxz1h+O77EGErv9ZdNm6d57
+m2Gau5T/SRyDAIfz3oZf+j//KirqCcZvBADxvUnY
+=Yctj
+-----END PGP MESSAGE-----
+
+//create a basic key plain-text: (invalid)
+	edition=basic
+	ccexpire=2016/05/18
+	ccnumberofvms=10
+//encode this basic plain-text and generate the encoded text string as key provided to end user
+//generate intercepting UI
+
+
+../license3j.sh decode --license-file=license.out --keyring-file="/Users/fengchang/.gnupg/pubring.gpg"
+
+http://jira.hotinno.com:1688/secure/RapidBoard.jspa?rapidView=2&projectKey=CC&view=planning.nodetail
+
+//发票报销
+//填通讯录
+
+在线通讯录:
+https://shimo.im/spreadsheet/OGanIynT2psYn6Xk
+https://shimo.im/spreadsheet/uUFvHVetUiUN1LIy
+
+cp ./Users/fengchang/.gnupg/pubring.gpg 
+
+2016/7/6
+issue license3j loadkeyring issue
+
+//create a basic key plain-text: (valid)
+	edition=basic
+	ccexpire=2016/12/18
+	ccnumberofvms=10
+
+valid key: 
+-----BEGIN PGP MESSAGE-----
+Version: BCPG v1.52
+
+owJ4nJvAy8zAxfjNXmpGGvvqbMbT9UniOZnJqXnFqW6ZOal+ibmpup7peflFqSnh
+NbuPKOvqKkClFdKA8lzK4akpCl6lOQoGZgqGZlYGplZGRgrOwSEKRgaGZlzJyakV
+BZlFqbYgnr6hkb6hBVAsrzQ3KbUoP60st9jW0IArNSWzJDM/zzYpsTgzmauTKYiF
+gZGLwYaVCWShqUxyTn5pSnJGahqUoaCRl6+QnJ+bm5pXoqlgU1xaUJBfVOIAV6aX
+mW/HwMUpAPNSyB3+v/KGClHz4nV47J+ffJC+faGQvs/JLdMjTDryA/x3nA/O1Z4Z
+l3LeeN7RvuUi6xLOlccf4TPZ1rvygpzrVm8PswOsUncPHD+ukHjw4gXWbz1Nh73f
+R8zervtqlZ3/vKUiBw+yLd2q+bNpR/zeReF8+sX3j0+w2Hnj8YNvQjsSJHrubu/e
+oGnZW7nWNufSrpkbnZhmPOcIl/c5q3D+9s49iawyZ9o2cq8MlPezSt6je/9vH88u
+nqXLxNmyvKI7y2+xN059yvRjzyShB7Zz9wSzctwU2bxQMfWdIuv6M3yXHuxdvGPv
+u6SpohPmRv5mn12dqC22R9nWMHixXPTi6FNJ2t07nI2ezfFa/ktCOmWSnqCRmMlb
+i2OTmaL+rZunuW2/4QKhNHsGv8uM9UzCp1YFOUdfvrbtdn/AnK1Jc3Z/2J/p/V+9
+le+e9OVn7xYEi8ut/XYoaer32rVbUja1NKybmLDda2vaZueORTFFB6zd067uYZia
+dv9XOvODO7MMr0keaP59pVx7vf22jevs/U9f2N/zjOXy2niZ9yHzpFx7OK//7Xrj
+2SyfOG292fKgh51bb58+XXD0YtnRV94VO+umdxcY5dWs2LNu6lyuldGulhacAex7
+A83jvoTcEm+Zz/x0vYMh4/o8v91syoeeb6juFtn65GW/mZDu+6mnjUPKV825w20o
+eG+ly2vtyKuS3pf4qnPu8554tKx3W4jIgYxcAAWpSHY=
+=3cbw
+-----END PGP MESSAGE-----
+
+../license3j.sh decode --license-file=license.out --keyring-file="/Users/fengchang/.gnupg/pubring.gpg"
+
+file -> project structure
+
+learn open office drawing chart
+
+
+https://www.overleaf.com/5639922dcvngr#/18278382/
+
+//save license key in mongo db
+//integrate license3j into application
+//package pubring.gpg to jar
+
+2016/7/8
+//email template using external by config 
+//find out how lease time were passed to backend?
+//lease time hour->day
+//add power off action
+//add notification for lease and power off
+//lease time/expire time to catalog, and make sure it works
+
+mvn clean install -P postFlight
+
+2016/7/11
+//go over existing jira items
+//udpate jira
+//empty license validation
+//fix bugs of vsphere snapshot issue when edit
+//post flag issue fix
+//blueprint list rm archive time/lease time
+
+search keyword!!!! angularjs route full reload
+angularjs validate current token
+
+2016/7/12
+JWTs (JSON web tokens)
+angularjs route spring security conflict
+importvm bug
+
+
+2016/7/13
+complex license:
+-----BEGIN PGP MESSAGE-----
+Version: BCPG v1.52
+
+owJ4nJvAy8zAxfjNXmpGGvvqbMbTK5LEczKTU/OKU90yc1L9EnNTdT3T8/KLUlPC
+W9faKevqKkClFdKA8lzK4akpCl6lOQqGxgqGBlamxlYmFgrOwSEKRgaGZlxlqUXF
+mfl5toZ6BlzJyakVBZlFqbYgGX1DI31jQ6BYXmluUmpRflpZbrGtoYGBAVdJZUGq
+bVlxQUZqUapOfgHQppLE5GydvLRirtSUzBKQaUmJxZnJXJ1MQSwMjFwMNqxMIJeZ
+yiTn5JemJGekpkEZChp5+QrJ+bm5qXklmgo2xaUFBflFJQ5wZXqZ+XYMXJwCML9f
+9Of/zZLnlrhh376lNrefvqx6XeEgOK+w9P8/yeUZb73kVpnv6e8u6r5zLWLyH/eu
+pHVrJzz7luhnJa6q8PaqsGix3LnC4/IBZ85lJFi+bH6nmP7b56FctDrXp8lL9s3Y
+653NazE/+dCBSykZkz8ff3n/sfaVD6+WHORL8Uy4plNy5euLM/u1G0M+O/28dfPa
+5ulM2yx+dQedcj8cUHV3za2tpx0lHWv1tpS53svm76qJ/MVoo1F5aCHr9us/fvYs
+smPkZ5P4uYxXxL10dUN9yYqmLDvtaU/Nbz68yGPaHSh9hbeylnt1wLazBw2KFv28
+OeXCQ9+ICOfaGoG5TK6WbGLam1hb/lyNmPmcKfiw3bZ711eWlk0+KLdZdvalfUtM
+pqkc8z+VtefK+mNS01luMR622puweEPaqb93xL9YX9GQ6Sxb9ayG5eO+u7xH1334
+s8ddQLeCXfyG3vqFtXw5ObXcTAwiH5ZftxURvJ+gZLZ4h0Re/mbmLM5vazsZf809
+vveV0eFuFq0rEpIX5Vu6DN5aaBxLVIniCOdPsX+xyFH034QFyoXlR0Vtnh9+9WV/
++qkD63QC/uwV5RT1ij469yrH3/NO+eV5VnsWvtmbtHpTV8z2/ZXK6v+klpZE5Orb
+zrk2f8Oyhm+edyddt3Uo6vfWvG7gp8X44dVb1fCjveq2IbxrOiQkjxkzvdj6Zplz
+XfVs2xV7dPYcKvdmCGf72wkADIpZPg==
+=2xc4
+-----END PGP MESSAGE-----
+
+//refactor license part code
+//find root cause of NPE error
+//import vm rename issues
+
+2016/7/14
+//update post
+//refactor import vm code
+//shutdown issue, if already shut down, do not send shutdown request to that vm
+..fix bug for zwq
+//interview
+
+
+2016/7/15
+os info:
+uname -a
+//fix bug for zwq
+//fix license bug
+
+
+-----BEGIN PGP MESSAGE-----
+Version: BCPG v1.52
+
+owJ4nJvAy8zAxfjNXmpGGvvqbMbTB4STxHMyk1PzilPdMnNS/RJzU3U90/Pyi1JT
+wjsq25V1dRWg0gppQHkuZbeiTAWv0hwFQ1MFQ2MrE0srUwsF5+AQBSMDQzOu/PK8
+1CLb5Jz80pTkjNQ0rrLUouLM/DxbQz0DruTk1IqCzKJUW5BKfUMjfWNDoFheaW5S
+alF+Wllusa2hgYEBV0llQaptWXFBRmpRqk5+AdDmksTkbJ28tGKugqL8lNLkEtvS
+vOw8oE1cqSmZJSDTHV3CHP2cXV3iw4IDPFyDXLk6mYJYGBi5GGxYmUCeMJWBuwjK
+UNDIy1dIzs/NTc0r0VSwKS4tKMgvKnGAK9PLzLdj4OIUgIXTlQgBhg072AvXHp60
+8ZOUwdKLt93qVQ9xaH9sWXD21B/JeH1da7tX+QZ5yw+H2jDufdGo9TBWsTGmaH9x
+nkP49tSNLypCsg8320znshCMFdO6N2uS2DKtIA6hbMYsl/y3i9iTrs59FP7MbU36
+sqwv3F+eXmVq2fSD9wUD8+RnXPm1M80nX5TUWCzzbHvdjHpTw9Vrk/hvTmXJPPHk
+JEP4P7Mtm+cqXdj17gFHYOim+4em78v68uH2X87Ko8LfjlhoKNw3fsK+zeD2jmT+
+58cWxW7L9FvmMHMC45PCMuFFDtO+HxfXYaxb6vfb3EW0eeOk/St/XGBKPNtx1uGe
+7aqA27sdPwYvmCGpE2upJtA95WVIuurcPVmS7+T5dyS7uh7Y/XDKPnfHxJLG6B1m
+uhnzP4YesP0nWb/5lH+3hLzDhcfc7r+5UyU+cDPcyj4d7q6Zaaz4Q5Rpclr2r2K9
+mztlr29/zrXg0IpZZ75OONdgNNE3Ou7qkj9PP6d+D1dv/ewS27dwec++I5sD2auZ
+dvwymViod3O1XKytSRvzhT2eWvmf9sTXv/BZn1K0yD9ANCfA/eASA4cE0w/t0yU7
+0ledLd/Ne8n8Q87FG2uDFBv+THArf7WhNyZjgv9N5427D7JGM0oU/Cyy7Hv/Lnn5
+OdEPhj3rttxhsSnLddGcenH58YZ1XXY3vz7JYWT909Hwxnne+iWSSoujMyOMNt7L
+vyOilAkAKallCQ==
+=70cu
+-----END PGP MESSAGE-----
+
+
+2016/7/18
+
+./generatelicense.sh license-plain-basic.txt license-encrypted-basic.txt
+tar -zcvf License3j.tar.gz License3j
+
+assign to project: 578cbc0ad4c65a2af41ca4d6
+
+//assign to project
+//ask Grisson about timeout
+
+2016/7/19
+theorem： 
+(a*b)%c=(a%c)*(b%c)
+autotracer.org
+
+//test
+//fixbugs
+//help clj with index/login
+
+|| (cloudEntries. cloudEntryTypeId == 'yacmp:cloudentry:type:vsphere' && component.own_properties.server.datastore_name == null)
+//getLicenes issue
+
+2016/7/20
+jira:
+http://192.168.1.107:8080/secure/Dashboard.jspa
+
+jira: fengchang/*lin
+
+things to discuss
+notification table in Inbox??
+部署中的创建人是ROLE_SOLUTION_USER
+分配到项目权限管理
+Long-on40-0208d 项目过滤does not work
+
+admin firefox
+admin chrome
+fengchang firefox
+fengchang chrome
+建议过滤不需要按钮，直接选中就执行
+why we can delete notification
+部署管理单项不能点击
+
+role entitlement: http://confluence.hotinno.com:1688/display/CLOUD/User+Role
+
+java annotation tutorial:
+https://www.javacodegeeks.com/2014/11/java-annotations-tutorial.html
+
+spring integration tutorial: 
+http://docs.spring.io/spring-integration/reference/htmlsingle/
+http://docs.spring.io/spring-integration/docs/2.0.0.RC1/reference/html/	
+
+2016/7/27
+//fix license null validation
+//duplicate cloud entry
+tab dissapears when editing bp
+密码不一致验证有问题
+删除操作有时候有问题,需要重新刷新页面方可
+CC-520
+
+CloudChef123
+
+interview log:
+
+2016/8/1
+It solves the “Project X depends on version 1.x but, Project Y needs 4.x” dilemma
+//tear down every 10 mins issue!
+
+sprint: http://jira.hotinno.com:1688/secure/RapidBoard.jspa?rapidView=2&projectKey=CC&view=planning.nodetail
+
+2016/8/2
+db.component.distinct( "model.typeName")
+//cc-545, isimported related
+//notification clear
+//task estimation
+//write one algo of medium
+//hard delete
+google phone interview tips: 
+	https://www.quora.com/What-is-the-best-way-to-prepare-for-a-phone-interview-with-Google-software-engineering-position
+
+interview tips:
+	http://jira.hotinno.com:1688/secure/RapidBoard.jspa?rapidView=2&projectKey=CC&view=planning.nodetail
+
+2016/8/3
+palindrome: fadsgsdyi
+https://www.glassdoor.com/Interview/google-interview-questions-SRCH_KE0,6.htm
+
+java array use .length, arraylist use .size()
+temp mysql password: dYDxnu62OS
+
+2016/8/4
+interview
+setup UI
+
+
+AOP use cases:
+System services such as logging, transaction management, and security often find their way into components whose core responsi- bilities is something else.
+
+online alarm:
+http://kukuklok.com/
+
+2016/8/8
+//import vm in rb for openstack
+//UI adjustment
+//provisioned vm should be shown in rb
+//quota update for vsphere
+//datastore autopopulate
+entitlements
+cloudify integration
+check bob's commit
+
+java interview questions:
+	http://www.indiabix.com/technical/core-java/6
+uni interview questions:
+	http://www.indiabix.com/technical/interview-questions-and-answers/
+
+
+
+2016/8/10
+2016-08-10T11:24:26.653923Z 1 [Note] A temporary password is generated for root@localhost: zkztm%4kuq?O
+
+If you lose this password, please consult the section How to Reset the Root Password in the MySQL reference manual.
+
+2016/8/11
+//fix bug duplicate import in rb after import from cloudentry
+//redesign importing vm()
+//wyz
+
+2016/8/12
+windows password
+importvm cloudify no deployment issue
+
+http://cloudbase-init.readthedocs.io/en/latest/userdata.html#userdata
+
+57a42e26d4c6c1dc1eb185e4
+
+resource backup:
+{
+    "_id" : ObjectId("57adb7a4d4c6fc8e7ca2c573"),
+    "_class" : "io.cloudchef.yacmp.core.cloudprovider.vsphere.VSphereVirtualMachine",
+    "status" : "started",
+    "addresses" : [ 
+        "192.168.84.132"
+    ],
+    "cpu" : 0,
+    "memory" : 0,
+    "name" : "vssnakevm_d2bf3",
+    "resourceType" : "cloudchef.vsphere.nodes.Server",
+    "cloudEntryId" : "57a42e3dd4c6c1dc1eb185e7",
+    "externalId" : "vm-10371",
+    "externalName" : "vssnakevm-d2bf3",0
+    "deploymentId" : "57adb6aad4c6fc8e7ca2c56e",
+    "nodeId" : "vssnakevm",
+    "nodeInstanceId" : "vssnakevm_d2bf3",
+    "isImported" : false,
+    "projectId" : "57a42e4cd4c6c1dc1eb185e8",
+    "resourcebundleId" : "57a42e75d4c6c1dc1eb185f9",
+    "tenantId" : "default",
+    "createdDate" : ISODate("2016-08-12T11:48:52.570Z"),
+    "createdBy" : "ROLE_SOLUTION_USER",
+    "updatedDate" : ISODate("2016-08-12T11:55:00.735Z"),
+    "updatedBy" : "ROLE_SOLUTION_USER"
+}
+
+workflowRequest.getParameters()
+{"operation":"run_script","node_instance_ids":["vssnakevm_d2bf3"],"operation_kwargs":{"script_path":"hello","process":{"env":{}}}}
+
+e5f5777a-d8fb-4144-afe7-c2d
+{"operation":"run_script","node_instance_ids":[null],"operation_kwargs":{"script_path":"hello","process":{"env":{}}}}
+
+{"operation":"run_script","node_instance_ids":["agent-vm-4a326"],"operation_kwargs":{"script_path":"hello","process":{"env":{}}}}
+
+
+private String generateBPtoCloudify(Resource resource){
+        String mainYamlContent="";
+        Yaml yaml = new Yaml();
+        CloudEntry cloudEntry = cloudEntryService.findOneNotErasePassword(resource.cloudEntryId);
+        if(resource.resourceType.equals("cloudchef.vsphere.nodes.Server")){
+            mainYamlContent = "tosca_definitions_version: cloudify_dsl_1_3\n" +
+                    "imports: ['http://127.0.0.1:53229/spec/base/types.yaml', 'http://127.0.0.1:53229/spec/vsphere-plugin/plugin.yaml']\n" +
+                    "node_templates:\n" +
+                    "  agent1:\n" +
+                    "    type: cloudchef.vsphere.nodes.Server\n" +
+                    "    properties:\n" +
+                    "      install_agent: false\n" +
+                    "      use_external_resource: true\n" +
+                    "      resource_id: "+resource.externalId+"\n" +
+                    "      server:\n" +
+                    "      networking:\n" +
+                    "      connection_config:\n" +
+                    "        cloud_entry_id: "+resource.cloudEntryId+"\n" +
+                    "        password: "+cloudEntry.getConfig("password")+"\n" +
+                    "        port: "+cloudEntry.getConfig("port")+"\n" +
+                    "        host: "+cloudEntry.getConfig("host")+"\n" +
+                    "        username: "+cloudEntry.getConfig("username");
+        }
+
+        Blueprint blueprint = new Blueprint();
+        blueprint.id = "bpid"+(resource.getId()==null?UUID.randomUUID().toString():resource.getId());
+        blueprint.status = PublishStatus.PUBLISHED;
+        blueprint.isImported = true;
+        blueprint.tenantId = cloudEntry.getTenantId();
+
+        BlueprintFile mainFile = new BlueprintFile();
+        mainFile.isMainFile = true;
+        mainFile.name = Constants.BLUEPRINT_MAIN_FILENAME;
+        mainFile.content = mainYamlContent;
+        mainFile.path = Constants.BLUEPRINT_MAIN_FILENAME;
+
+        BlueprintFile mainBPFile = BlueprintUtils.getMainFile(blueprint);
+        if (mainBPFile != null) {
+            blueprint.removeBlueprintFile(mainBPFile);
+        }
+        blueprint.addBlueprintFile(mainFile);
+        blueprint.name = "bpname"+resource.getId();
+        blueprint.mainYaml = mainYamlContent;
+        return cloudifyGatewayService.publishBlueprint(blueprint);
+    }
+
+
+http://cloudify.hotinno.com:1688/api/v2/deployments/57b15eae74f8d980eac88631
+
+{"blueprint_id":"57a42c1ad4c6c1dc1eb185b2--9f09eb74-b745-4448-9d94-cbd6e857c0e0", "inputs":{}}
+
+cloudOpExecutionDelayChannel
+
+2016/8/15
+//cloudify java ask mao
+//talk with bob about design
+//run script from imported vm
+
+
+2016/8/16
+tosca_definitions_version: cloudify_dsl_1_3
+imports:
+- http://127.0.0.1:53229/spec/base/types.yaml
+- http://127.0.0.1:53229/spec/openstack-plugin/plugin.yaml
+
+node_templates:
+  rabbit:
+    type: cloudify.openstack.nodes.Server
+    properties:
+      use_external_resource: true
+      resource_id: ???
+      agent_config:
+        install_method: none
+      server:
+      use_password: false
+      image:
+      flavor:
+      management_network_name:
+      openstack_config:
+        cloud_entry_id: ??????
+        tenant_name: ????
+        password: plain
+        auth_url: ????
+        region: ????
+        username: ?????
+    relationships: []
+
+mysql path
+//close last sprint
+//import succeed -> import request sent
+//openstack import
+
+
+2016/8/17
+//estimate openstack enhancement
+//deployment issue
+1. openstack deployment support host aggregation
+2. openstack support host aggregation in RB
+3. openstack RB add quota page
+4. openstack install software in single node
+5. Physical host monitor
+
+//auto refresh after importing vm
+//vcpu/mem not decrease after importing vm
+//import only powered on vm(openstack/vsphere)
+
+interview
+2n
+lianbiao butai qingchu
+stack queue budong
+yiwei hr mian
+//过滤不开机
+
+/usr/local/sbin/rabbitmqctl stop_app
+/usr/local/sbin/rabbitmqctl reset
+/usr/local/sbin/rabbitmqctl start
+rabbitmqadmin list queues name
+
+2016/8/18
+http://docs.openstack.org/kilo/config-reference/content/section_compute-scheduler.html
+
+../license3j.sh encode --license-file=license-plain-jibeidianwang.txt --keyring-file="/Users/fengchang/.gnupg/secring.gpg" --key="cloudchef" --password="masterking123
+
+2016/8/22
+//if not admin, not allow host aggregate
+
+
+new google account:
+
+2016/8/23
+new wix account/strikingly account: 
+163/lmfj
+//duplicate check tenant for cloudentry issue
+//finish compute resource tab in openstack
+//code refactor 
+//deploment错乱(provision/imported) hide imported
+//update used resource when import vm
+//delete vm
+physical host monitoring
+
+cloudchef/Passw0rd
+
+interview with lixiong:
+
+why do you come?
+
+why 2 months?
+英文如何？
+//second job no longer than a year
+your past experience
+java 
+spring
+链表知道，但第一题不会解
+冒泡排序 基本上ok
+b2b 
+DI / AOP
+
+
+2016/8/24
+how to do physical host monitoring(openstack)
+	http://confluence.hotinno.com:1688/pages/viewpage.action?pageId=4587726
+
+password->password123
+
+.ssh/known_hosts
+
+ssh -i agent_key.pem ubuntu@192.168.84.129
+
+2016/8/26
+fix bug search functionality in user page
+fix bug of notification
+remote copy:
+scp hehe.txt root@192.168.84.31:/var/tmp/fengchang
+
+
+<span translate translate-values="{count:{{requestsCount}}}">You have %count% PROCESSING requests</span>
+
+2016/8/29
+//write license key generator wiki page
+//interview with gekan:
+//intall agent
+
+http://cloudify.hotinno.com:1688/api/v2/executions?workflow_id=create_deployment_environment&deployment_id=4c4b1046-80e9-4d35-85a4-400df93f0b6b&_include=workflow_id,deployment_id,id,status,error
+
+4c4b1046-80e9-4d35-85a4-400df93f0b6b
+{"agent_kwargs":{"user": "cloudchef","password": "Passw0rd","ip": "192.168.84.122"}}
+
+control+option mouse out
+//notification bug
+//cannot allow filter in page
+
+@Query("{'$and':[{'name' : {$regex: '.*?0.*', $options: 'i'}}, {'status' : { '$ne' : '?1'}}, {'importGenerated':{'$ne': 'true'}}]}")
+
+//bizzard search
+//bizzar search in project user tab
+{'$and':[{status : { $ne : "_param_0" }},{importeGenerated:{$ne: 'true'}}]}
+//project add user still search  in page
